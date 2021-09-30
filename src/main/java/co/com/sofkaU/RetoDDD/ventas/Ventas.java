@@ -3,6 +3,8 @@ package co.com.sofkaU.RetoDDD.ventas;
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofkaU.RetoDDD.atencionAlCLiente.PostVenta;
+import co.com.sofkaU.RetoDDD.atencionAlCLiente.values.IdPostVenta;
+import co.com.sofkaU.RetoDDD.ventas.comands.AsociarPostVenta;
 import co.com.sofkaU.RetoDDD.ventas.events.*;
 import co.com.sofkaU.RetoDDD.ventas.values.*;
 
@@ -18,7 +20,7 @@ public class Ventas extends AggregateEvent<IdVentas> {
     protected Pedido pedido;
     protected Set<Producto> productos;
     protected Factura factura;
-    protected PostVenta postVenta;
+    protected IdPostVenta idPostVenta;
 
     //aplico ese metodo cuando el agregado es nuevo
     public Ventas(IdVentas entityId, CanalVenta canalVenta, TipoVenta tipoVenta) {
@@ -50,6 +52,10 @@ public class Ventas extends AggregateEvent<IdVentas> {
         Objects.requireNonNull(nombrePedido);
         Objects.requireNonNull(descripcionPedido);
         appendChange(new PedidoAgregado(entityId, nombrePedido, descripcionPedido)).apply();
+    }
+
+    public void asociarPostVenta(IdPostVenta idPostVenta){
+        appendChange(new AsociarPostVenta(idPostVenta)).apply();
     }
 
     public void agregarProducto(IdProducto idProducto, NombreProducto nombreProducto){

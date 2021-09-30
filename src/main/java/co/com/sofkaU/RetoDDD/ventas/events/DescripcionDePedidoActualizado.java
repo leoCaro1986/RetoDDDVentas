@@ -15,10 +15,12 @@ public class DescripcionDePedidoActualizado extends DomainEvent {
     }
 
     public IdPedido getIdPedido1() {
+
         return idPedido1;
     }
 
     public DescripcionPedido getDescripcionPedido() {
+
         return descripcionPedido;
     }
 }
