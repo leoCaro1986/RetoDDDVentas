@@ -17,7 +17,7 @@ public class OrdenDeServicio extends Entity<IdOrdenDeServicio> {
         this.estadoOrdenDeServicio = estadoOrdenDeServicio;
     }
 
-    public  void cambiarEstadoDeLaServicio(EstadoOrdenDeServicio estadoOrdenDeServicio){
+    public  void cambiarEstadoDeLaOrdenDeServicio(EstadoOrdenDeServicio estadoOrdenDeServicio){
         this.estadoOrdenDeServicio = Objects.requireNonNull(estadoOrdenDeServicio);
     }
 

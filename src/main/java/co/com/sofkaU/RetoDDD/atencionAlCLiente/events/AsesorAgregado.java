@@ -28,3 +28,4 @@ public class AsesorAgregado extends DomainEvent {
         return tipoDeAsesoria;
     }
 }
+

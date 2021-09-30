@@ -21,3 +21,4 @@ public class DescripcionOrdenDeServicioActualizada extends DomainEvent {
         return descripcionOrdenDeServicio;
     }
 }
+

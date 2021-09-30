@@ -2,7 +2,6 @@ package co.com.sofkaU.RetoDDD.ventas.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofkaU.RetoDDD.ventas.values.CanalVenta;
-import co.com.sofkaU.RetoDDD.ventas.values.IdPedido;
 import co.com.sofkaU.RetoDDD.ventas.values.TipoVenta;
 
 public class VentaCreada extends DomainEvent {

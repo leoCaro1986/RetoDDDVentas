@@ -13,6 +13,9 @@ public class VentasChange extends EventChange {
             ventas.productos = new HashSet<>();
         });
 
+        apply((PostVentaAsociada event)->{
+            ventas.idPostVenta = event.getIdPostVenta();
+        });
 
         apply((PedidoAgregado event) ->{
             ventas.pedido = new Pedido(event.getIdPedido(), event.getNombrePedido(), event.getDescripcionPedido());
@@ -34,6 +37,10 @@ public class VentasChange extends EventChange {
 
         apply((PrecioActualizado event) -> {
            ventas.factura.actualizarPrecio(event.getPrecio());
+        });
+
+        apply((DescripcionDePedidoActualizado event)->{
+            ventas.pedido.actualizarDescripcion(event.getDescripcionPedido());
         });
     }
 }

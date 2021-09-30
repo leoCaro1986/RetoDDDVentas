@@ -29,3 +29,4 @@ public class OrdenDeServicioAgregada  extends DomainEvent {
         return estadoOrdenDeServicio;
     }
 }
+

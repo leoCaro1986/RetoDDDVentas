@@ -2,7 +2,6 @@ package co.com.sofkaU.RetoDDD.ventas;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
-import co.com.sofkaU.RetoDDD.atencionAlCLiente.PostVenta;
 import co.com.sofkaU.RetoDDD.atencionAlCLiente.values.IdPostVenta;
 import co.com.sofkaU.RetoDDD.ventas.comands.AsociarPostVenta;
 import co.com.sofkaU.RetoDDD.ventas.events.*;
@@ -55,7 +54,7 @@ public class Ventas extends AggregateEvent<IdVentas> {
     }
 
     public void asociarPostVenta(IdPostVenta idPostVenta){
-        appendChange(new AsociarPostVenta(idPostVenta)).apply();
+        appendChange(new PostVentaAsociada(idPostVenta)).apply();
     }
 
     public void agregarProducto(IdProducto idProducto, NombreProducto nombreProducto){
@@ -91,6 +90,13 @@ public class Ventas extends AggregateEvent<IdVentas> {
     }
 
 
+    public CanalVenta getCanalVenta() {
+        return canalVenta;
+    }
+
+    public IdPostVenta getIdPostVenta() {
+        return idPostVenta;
+    }
 
     public TipoVenta tipoVenta(){
         return tipoVenta;

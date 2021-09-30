@@ -2,11 +2,7 @@ package co.com.sofkaU.RetoDDD.ventas.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofkaU.RetoDDD.ventas.values.IdFactura;
-import co.com.sofkaU.RetoDDD.ventas.values.IdProducto;
-import co.com.sofkaU.RetoDDD.ventas.values.NombreProducto;
 import co.com.sofkaU.RetoDDD.ventas.values.Precio;
-
-import java.util.UUID;
 
 public class PrecioActualizado extends DomainEvent{
     private final IdFactura idFactura;

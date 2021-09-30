@@ -29,3 +29,4 @@ public class Asesor extends Entity<IdAsesor> {
         return tipoDeAsesoria;
     }
 }
+

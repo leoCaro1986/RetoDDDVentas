@@ -29,3 +29,4 @@ public class Cliente extends Entity<IdCliente> {
         return motivoPQR;
     }
 }
+

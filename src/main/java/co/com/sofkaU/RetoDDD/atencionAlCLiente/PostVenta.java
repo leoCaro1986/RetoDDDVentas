@@ -1,10 +1,11 @@
 package co.com.sofkaU.RetoDDD.atencionAlCLiente;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofkaU.RetoDDD.atencionAlCLiente.events.*;
 import co.com.sofkaU.RetoDDD.atencionAlCLiente.values.*;
-import co.com.sofkaU.RetoDDD.ventas.events.DescripcionDePedidoActualizado;
 
+import java.util.List;
 import java.util.Objects;
 
 public class PostVenta extends AggregateEvent<IdPostVenta> {
@@ -17,6 +18,19 @@ public class PostVenta extends AggregateEvent<IdPostVenta> {
         super(entityId);
         appendChange(new PostVentaCreada(fechaDeServicio)).apply();
     }
+
+    private PostVenta(IdPostVenta entityId){
+        super(entityId);
+        subscribe(new PostVentaChange(this));
+    }
+
+
+    public static PostVenta from(IdPostVenta idPostVenta, List<DomainEvent> events){
+        var postVenta = new PostVenta(idPostVenta);
+        events.forEach(postVenta::applyEvent);
+        return postVenta;
+    }
+
 
     public void agregarOrdenDeServicio(IdOrdenDeServicio entityId, DescripcionOrdenDeServicio descripcionOrdenDeServicio, EstadoOrdenDeServicio estadoOrdenDeServicio){
         Objects.requireNonNull(entityId);
@@ -42,6 +56,20 @@ public class PostVenta extends AggregateEvent<IdPostVenta> {
     public void actualizarDescripcionOrdenDeServicio(IdOrdenDeServicio entityId, DescripcionOrdenDeServicio descripcionOrdenDeServicio){
         appendChange(new DescripcionOrdenDeServicioActualizada(entityId, descripcionOrdenDeServicio)).apply();
     }
+
+    public void actualizarNombreCliente(NombreCliente nombreCliente){
+        appendChange(new NombreClienteActualizado(nombreCliente)).apply();
+    }
+
+    public void cambiarEstadoDeLaOrdenDeServicio(EstadoOrdenDeServicio estadoOrdenDeServicio){
+        appendChange(new EstadoDeOrdenCambiado(estadoOrdenDeServicio)).apply();
+    }
+
+    public void actualizarTipoDeAsesoria(TipoDeAsesoria tipoDeAsesoria){
+        appendChange(new TipoDeAsesoriaActualizado(tipoDeAsesoria)).apply();
+    }
+
+
 
 
     public FechaDeServicio fechaDeServicio(){
