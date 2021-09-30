@@ -5,12 +5,12 @@ import co.com.sofkaU.RetoDDD.ventas.values.IdProducto;
 import co.com.sofkaU.RetoDDD.ventas.values.IdVentas;
 import co.com.sofkaU.RetoDDD.ventas.values.NombreProducto;
 
-public class AgregarProducto extends Command {
+public class ActualizarNombreDeProducto extends Command {
     private final IdVentas idVentas;
     private final IdProducto idProducto;
     private final NombreProducto nombreProducto;
 
-    public AgregarProducto(IdVentas idVentas, IdProducto idProducto, NombreProducto nombreProducto) {
+    public ActualizarNombreDeProducto(IdVentas idVentas, IdProducto idProducto, NombreProducto nombreProducto) {
         this.idVentas = idVentas;
         this.idProducto = idProducto;
         this.nombreProducto = nombreProducto;

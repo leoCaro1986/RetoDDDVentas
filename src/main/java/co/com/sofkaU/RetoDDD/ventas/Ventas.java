@@ -1,9 +1,12 @@
 package co.com.sofkaU.RetoDDD.ventas;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofkaU.RetoDDD.atencionAlCLiente.PostVenta;
 import co.com.sofkaU.RetoDDD.ventas.events.*;
 import co.com.sofkaU.RetoDDD.ventas.values.*;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -15,7 +18,9 @@ public class Ventas extends AggregateEvent<IdVentas> {
     protected Pedido pedido;
     protected Set<Producto> productos;
     protected Factura factura;
+    protected PostVenta postVenta;
 
+    //aplico ese metodo cuando el agregado es nuevo
     public Ventas(IdVentas entityId, CanalVenta canalVenta, TipoVenta tipoVenta) {
         super(entityId);
         appendChange(new VentaCreada(tipoVenta, canalVenta)).apply();
@@ -25,6 +30,13 @@ public class Ventas extends AggregateEvent<IdVentas> {
     private Ventas(IdVentas entityId){
         super(entityId);
         subscribe(new VentasChange(this));
+    }
+
+//metodo para agregado el agregado que ya esta creado, vamos a crear la venta
+    public static Ventas from(IdVentas idVentas, List<DomainEvent> events){
+        var ventas = new Ventas(idVentas);
+        events.forEach(ventas::applyEvent);
+        return ventas;
     }
 
     public void actualizarDescripcionDePedido(IdPedido entityId, DescripcionPedido descripcionPedido){
@@ -64,7 +76,7 @@ public class Ventas extends AggregateEvent<IdVentas> {
         appendChange(new PrecioActualizado(idFactura, precio)).apply();
     }
 
-    //Encontrar producto por id
+    //Encontrar producto por id, no es comando
     public Optional<Producto>  getProductoPorId(IdProducto idProducto){
         return productos
                 .stream()
