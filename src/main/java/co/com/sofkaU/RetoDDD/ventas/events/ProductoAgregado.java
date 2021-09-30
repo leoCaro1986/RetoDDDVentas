@@ -4,20 +4,18 @@ import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofkaU.RetoDDD.ventas.values.IdProducto;
 import co.com.sofkaU.RetoDDD.ventas.values.NombreProducto;
 
-import java.util.UUID;
-
 public class ProductoAgregado extends DomainEvent{
-    private final IdProducto entityId;
+    private final IdProducto idProducto;
     private final NombreProducto nombreProducto;
 
-    public ProductoAgregado(IdProducto entityId, NombreProducto nombreProducto) {
+    public ProductoAgregado(IdProducto idProducto, NombreProducto nombreProducto) {
         super("empresa.venta.productoagregado");
-        this.entityId=entityId;
+        this.idProducto =idProducto;
         this.nombreProducto=nombreProducto;
     }
 
-    public IdProducto getEntityId() {
-        return entityId;
+    public IdProducto getIdProducto() {
+        return idProducto;
     }
 
     public NombreProducto getNombreProducto() {

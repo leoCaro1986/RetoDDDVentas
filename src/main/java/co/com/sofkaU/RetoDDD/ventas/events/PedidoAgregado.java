@@ -4,26 +4,29 @@ import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofkaU.RetoDDD.ventas.values.*;
 
 public class PedidoAgregado extends DomainEvent {
-    private final IdPedido entityId;
+    private final IdPedido idPedido;
     private final NombrePedido nombrePedido;
     private final DescripcionPedido descripcionPedido;
 
-    public PedidoAgregado(IdPedido entityId, NombrePedido nombrePedido, DescripcionPedido descripcionPedido) {
+    public PedidoAgregado(IdPedido idPedido, NombrePedido nombrePedido, DescripcionPedido descripcionPedido) {
         super("empresa.venta.pedidoagregado");
-        this.entityId=entityId;
+        this.idPedido =idPedido;
         this.nombrePedido=nombrePedido;
         this.descripcionPedido=descripcionPedido;
     }
 
-    public IdPedido getEntityId() {
-        return entityId;
+    public IdPedido getIdPedido() {
+
+        return idPedido;
     }
 
     public NombrePedido getNombrePedido() {
+
         return nombrePedido;
     }
 
     public DescripcionPedido getDescripcionPedido() {
+
         return descripcionPedido;
     }
 }

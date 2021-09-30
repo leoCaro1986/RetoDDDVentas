@@ -5,22 +5,20 @@ import co.com.sofkaU.RetoDDD.ventas.values.FechaFactura;
 import co.com.sofkaU.RetoDDD.ventas.values.IdFactura;
 import co.com.sofkaU.RetoDDD.ventas.values.Precio;
 
-import java.util.UUID;
-
 public class FacturaAgregada extends DomainEvent {
-    private final IdFactura entityId;
+    private final IdFactura idFactura;
     private final FechaFactura fechaFactura;
     private final Precio precio;
 
-    public FacturaAgregada(IdFactura entityId, FechaFactura fechaFactura, Precio precio) {
+    public FacturaAgregada(IdFactura idFactura, FechaFactura fechaFactura, Precio precio) {
         super("empresa.venta.facturaagregada");
-        this.entityId=entityId;
+        this.idFactura =idFactura;
         this.fechaFactura=fechaFactura;
         this.precio=precio;
     }
 
-    public IdFactura getEntityId() {
-        return entityId;
+    public IdFactura getIdFactura() {
+        return idFactura;
     }
 
     public FechaFactura getFechaFactura() {

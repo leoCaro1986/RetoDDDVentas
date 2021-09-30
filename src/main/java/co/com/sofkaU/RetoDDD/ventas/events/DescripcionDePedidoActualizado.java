@@ -4,20 +4,18 @@ import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofkaU.RetoDDD.ventas.values.DescripcionPedido;
 import co.com.sofkaU.RetoDDD.ventas.values.IdPedido;
 
-import java.util.UUID;
-
 public class DescripcionDePedidoActualizado extends DomainEvent {
-    private final IdPedido entityId;
+    private final IdPedido idPedido1;
     private final DescripcionPedido descripcionPedido;
 
-    public DescripcionDePedidoActualizado(IdPedido entityId, DescripcionPedido descripcionPedido) {
+    public DescripcionDePedidoActualizado(IdPedido idPedido1, DescripcionPedido descripcionPedido) {
         super("empresa.venta.descripciondepedidoactualizado");
-        this.entityId=entityId;
+        this.idPedido1 =idPedido1;
         this.descripcionPedido=descripcionPedido;
     }
 
-    public IdPedido getEntityId() {
-        return entityId;
+    public IdPedido getIdPedido1() {
+        return idPedido1;
     }
 
     public DescripcionPedido getDescripcionPedido() {

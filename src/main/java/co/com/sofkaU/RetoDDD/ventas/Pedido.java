@@ -23,10 +23,12 @@ public class Pedido extends Entity<IdPedido> {
     }
 
     public NombrePedido nombrePedido() {
+
         return nombrePedido;
     }
 
     public DescripcionPedido descripcionPedido() {
+
         return descripcionPedido;
     }
 }

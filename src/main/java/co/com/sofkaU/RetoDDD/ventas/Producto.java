@@ -7,10 +7,10 @@ import co.com.sofkaU.RetoDDD.ventas.values.NombreProducto;
 import java.util.Objects;
 
 public class Producto extends Entity<IdProducto> {
-
     private NombreProducto nombreProducto;
-    public Producto(IdProducto entityId, NombreProducto nombreProducto) {
-        super(entityId);
+
+    public Producto(IdProducto idProducto, NombreProducto nombreProducto) {
+        super(idProducto);
         this.nombreProducto=nombreProducto;
     }
 

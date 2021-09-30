@@ -12,13 +12,19 @@ import java.util.Set;
 public class Ventas extends AggregateEvent<IdVentas> {
     protected CanalVenta canalVenta;
     protected TipoVenta tipoVenta;
-    protected Pedido pedidos;
+    protected Pedido pedido;
     protected Set<Producto> productos;
-    protected Factura facturas;
+    protected Factura factura;
 
     public Ventas(IdVentas entityId, CanalVenta canalVenta, TipoVenta tipoVenta) {
         super(entityId);
         appendChange(new VentaCreada(tipoVenta, canalVenta)).apply();
+    }
+
+    //Constructor privado para afectar los estados
+    private Ventas(IdVentas entityId){
+        super(entityId);
+        subscribe(new VentasChange(this));
     }
 
     public void actualizarDescripcionDePedido(IdPedido entityId, DescripcionPedido descripcionPedido){
@@ -34,28 +40,38 @@ public class Ventas extends AggregateEvent<IdVentas> {
         appendChange(new PedidoAgregado(entityId, nombrePedido, descripcionPedido)).apply();
     }
 
-    public void agregarProducto(IdProducto entityId, NombreProducto nombreProducto){
-        Objects.requireNonNull(entityId);
+    public void agregarProducto(IdProducto idProducto, NombreProducto nombreProducto){
+        Objects.requireNonNull(idProducto);
         Objects.requireNonNull(nombreProducto);
-        appendChange(new ProductoAgregado(entityId, nombreProducto)).apply();
+        appendChange(new ProductoAgregado(idProducto, nombreProducto)).apply();
     }
-    public void actualizarNombreDeProducto(IdProducto entityId, NombreProducto nombreProducto){
-        Objects.requireNonNull(entityId);
+    public void actualizarNombreDeProducto(IdProducto idProducto, NombreProducto nombreProducto){
+        Objects.requireNonNull(idProducto);
         Objects.requireNonNull(nombreProducto);
-        appendChange(new NombreProductoActualizado(entityId, nombreProducto)).apply();
+        appendChange(new NombreProductoActualizado(idProducto, nombreProducto)).apply();
     }
 
-    public  void agregarFactura(IdFactura entityId, FechaFactura fechaFactura, Precio precio){
+    public void agregarFactura(IdFactura entityId, FechaFactura fechaFactura, Precio precio){
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(fechaFactura);
         Objects.requireNonNull(precio);
         appendChange(new FacturaAgregada(entityId, fechaFactura, precio)).apply();
     }
 
-    //Encontrar ffactura por id
-    /*public Optional<Factura> getFacturaPorId(IdFactura entityId){
-        return facturas().stream().filter(factura -> factura.identity().equals(entityId)).findFirst();
-    }*/
+    public void actualizarPrecio(IdFactura idFactura, Precio precio){
+        Objects.requireNonNull(idFactura);
+        Objects.requireNonNull(precio);
+        appendChange(new PrecioActualizado(idFactura, precio)).apply();
+    }
+
+    //Encontrar producto por id
+    public Optional<Producto>  getProductoPorId(IdProducto idProducto){
+        return productos
+                .stream()
+                .filter(producto -> producto.identity().equals(idProducto))
+                .findFirst();
+    }
+
 
 
     public TipoVenta tipoVenta(){
@@ -67,7 +83,7 @@ public class Ventas extends AggregateEvent<IdVentas> {
     }
 
     public Pedido pedidos(){
-        return pedidos;
+        return pedido;
     }
 
     public Set<Producto> productos(){
@@ -75,6 +91,6 @@ public class Ventas extends AggregateEvent<IdVentas> {
     }
 
     public Factura factura(){
-        return facturas;
+        return factura;
     }
 }

@@ -4,23 +4,23 @@ import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofkaU.RetoDDD.ventas.values.IdProducto;
 import co.com.sofkaU.RetoDDD.ventas.values.NombreProducto;
 
-import java.util.UUID;
-
 public class NombreProductoActualizado extends DomainEvent {
-    private final IdProducto entityId;
+    private final IdProducto idProducto;
     private final NombreProducto nombreProducto;
 
-    public NombreProductoActualizado(IdProducto entityId, NombreProducto nombreProducto) {
+    public NombreProductoActualizado(IdProducto idProducto, NombreProducto nombreProducto) {
         super("empresa.venta.nombreproductoactualizado");
-        this.entityId=entityId;
+        this.idProducto =idProducto;
         this.nombreProducto=nombreProducto;
     }
 
-    public IdProducto getEntityId() {
-        return entityId;
+    public IdProducto getIdProducto() {
+
+        return idProducto;
     }
 
     public NombreProducto getNombreProducto() {
+
         return nombreProducto;
     }
 }
