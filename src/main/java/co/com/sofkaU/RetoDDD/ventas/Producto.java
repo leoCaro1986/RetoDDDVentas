@@ -2,9 +2,23 @@ package co.com.sofkaU.RetoDDD.ventas;
 
 import co.com.sofka.domain.generic.Entity;
 import co.com.sofkaU.RetoDDD.ventas.values.IdProducto;
+import co.com.sofkaU.RetoDDD.ventas.values.NombreProducto;
+
+import java.util.Objects;
 
 public class Producto extends Entity<IdProducto> {
-    public Producto(IdProducto entityId) {
+
+    private NombreProducto nombreProducto;
+    public Producto(IdProducto entityId, NombreProducto nombreProducto) {
         super(entityId);
+        this.nombreProducto=nombreProducto;
+    }
+
+    public  void actualizarNombreProducto(NombreProducto nombreProducto){
+        this.nombreProducto= Objects.requireNonNull(nombreProducto);
+    }
+
+    public NombreProducto nombreProducto() {
+        return nombreProducto;
     }
 }

@@ -18,7 +18,6 @@ public class Pedido extends Entity<IdPedido> {
     }
 
 
-
     public  void actualizarDescripcion(DescripcionPedido descripcionPedido){
         this.descripcionPedido = Objects.requireNonNull(descripcionPedido);
     }
