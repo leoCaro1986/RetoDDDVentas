@@ -5,18 +5,18 @@ import co.com.sofka.domain.generic.ValueObject;
 import java.util.Date;
 import java.util.Objects;
 
-public class FechaFactura implements ValueObject<Date> {
+public class FechaFactura implements ValueObject<String> {
 
-    private final Date value;
+    private final String value;
 
-    public FechaFactura(Date value){
+    public FechaFactura(String value){
         this.value= Objects.requireNonNull(value);
         if (this.value.toString().isBlank()){
             throw new IllegalArgumentException("La fecha de la factura no puede estar vacia");
         }
     }
 
-    public Date value() {
+    public String value() {
         return  value;
     }
 
