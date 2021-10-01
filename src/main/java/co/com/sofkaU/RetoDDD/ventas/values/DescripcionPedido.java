@@ -16,6 +16,6 @@ public class DescripcionPedido implements ValueObject<String> {
     }
 
     public String value() {
-        return  null;
+        return  value;
     }
 }
