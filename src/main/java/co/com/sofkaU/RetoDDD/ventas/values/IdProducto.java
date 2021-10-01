@@ -6,7 +6,7 @@ public class IdProducto extends Identity {
     public IdProducto() {
     }
 
-    private IdProducto(String id){
+    public IdProducto(String id){
         super(id);
     }
     public  static  IdProducto of(String id){
