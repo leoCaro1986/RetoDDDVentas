@@ -23,7 +23,7 @@ class CrearVentaUseCaseTest {
         var command = new CrearVenta(
                 IdVentas.of("1234fdsajhf"),
                 new CanalVenta("efectivo"),
-                new TipoVenta("digital")
+                new TipoVenta("leonar")
 
         );
         var useCase = new CrearVentaUseCase();
@@ -44,6 +44,22 @@ class CrearVentaUseCaseTest {
 
     @Test
     void crearCasoExplicito(){
+
+        var command = new CrearVenta(
+                IdVentas.of("12345tryod"),
+                new CanalVenta("efectivo"),
+                new TipoVenta("digital")
+        );
+        var useCase = new CrearVentaUseCase();
+
+        var events = UseCaseHandler.getInstance()
+                .syncExecutor(useCase, new RequestCommand<>(command))
+                .orElseThrow()
+                .getDomainEvents();
+
+        var event = (VentaCreada)events.get(0);
+        Assertions.assertEquals("efectivo", event.getCanalVenta().value());
+        Assertions.assertEquals("digital", event.getTipoVenta().value());
 
     }
 

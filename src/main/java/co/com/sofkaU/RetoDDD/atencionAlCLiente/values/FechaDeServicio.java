@@ -5,18 +5,19 @@ import co.com.sofka.domain.generic.ValueObject;
 import java.util.Date;
 import java.util.Objects;
 
-public class FechaDeServicio implements ValueObject<Date> {
+public class FechaDeServicio implements ValueObject<String> {
 
-    private final Date value;
+    private final String value;
 
-    public FechaDeServicio(Date value){
+    public FechaDeServicio(String value){
         this.value= Objects.requireNonNull(value);
-        if (this.value.toString().isBlank()){
+        if (this.value.isBlank()){
             throw new IllegalArgumentException("La fecha del servicio no puede estar vacio");
         }
+
     }
 
-    public Date value() {
+    public String value() {
         return  value;
     }
 
