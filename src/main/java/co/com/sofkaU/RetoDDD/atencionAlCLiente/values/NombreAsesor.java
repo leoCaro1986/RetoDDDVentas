@@ -13,6 +13,12 @@ public class NombreAsesor implements ValueObject<String> {
         if (this.value.isBlank()){
             throw new IllegalArgumentException("El nombre del asesor no puede estar vacio");
         }
+        if (this.value.length()<=5){
+            throw new IllegalArgumentException("EL nombre debe contener mas de 5 caracteres");
+        }
+        if (this.value.length()>=5){
+            throw new IllegalArgumentException("EL nombre debe no contener mas de 50 caracteres");
+        }
     }
 
     public String value() {

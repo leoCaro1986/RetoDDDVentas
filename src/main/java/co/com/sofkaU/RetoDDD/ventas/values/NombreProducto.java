@@ -12,6 +12,9 @@ public class NombreProducto implements ValueObject<String> {
         if (this.value.isBlank()){
             throw new IllegalArgumentException("El nombre del producto no puede estar vacio");
         }
+        if (this.value.length()<=5){
+            throw new IllegalArgumentException("EL nombre del producto debe contener mas de 5 caracteres");
+        }
     }
     public String value() {
         return  value;
