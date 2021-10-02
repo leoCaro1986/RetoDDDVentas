@@ -2,7 +2,9 @@ package co.com.sofkaU.RetoDDD.ventas;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofkaU.RetoDDD.atencionAlCLiente.values.IdAsesor;
 import co.com.sofkaU.RetoDDD.atencionAlCLiente.values.IdPostVenta;
+import co.com.sofkaU.RetoDDD.atencionAlCLiente.values.NombreAsesor;
 import co.com.sofkaU.RetoDDD.ventas.comands.AsociarPostVenta;
 import co.com.sofkaU.RetoDDD.ventas.events.*;
 import co.com.sofkaU.RetoDDD.ventas.values.*;
@@ -117,4 +119,6 @@ public class Ventas extends AggregateEvent<IdVentas> {
     public Factura factura(){
         return factura;
     }
+
+
 }

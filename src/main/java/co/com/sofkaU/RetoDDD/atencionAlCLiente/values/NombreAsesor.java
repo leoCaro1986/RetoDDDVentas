@@ -16,7 +16,7 @@ public class NombreAsesor implements ValueObject<String> {
         if (this.value.length()<=5){
             throw new IllegalArgumentException("EL nombre debe contener mas de 5 caracteres");
         }
-        if (this.value.length()>=5){
+        if (this.value.length()>=50){
             throw new IllegalArgumentException("EL nombre debe no contener mas de 50 caracteres");
         }
     }
