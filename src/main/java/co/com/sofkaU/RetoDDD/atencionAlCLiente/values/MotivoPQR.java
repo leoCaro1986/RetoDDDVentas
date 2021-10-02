@@ -13,7 +13,7 @@ public class MotivoPQR implements ValueObject<String> {
         if (this.value.isBlank()){
             throw new IllegalArgumentException("El motivo del PQR no puede estar vacio");
         }
-        if (this.value.length()<=20){
+        if (this.value.length()>=20){
             throw new IllegalArgumentException("EL motivo del PQR debe contener mas de 20 caracteres");
         }
     }
